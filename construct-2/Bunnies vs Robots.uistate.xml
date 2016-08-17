@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2uistate>
+    <!--This is a UI state file - its content describes the user interface settings when the project was last open.
+It is entirely optional and the project will load without it.  If you are placing the project under source control,
+you probably do not want to add any .uistate.xml files to the repository.-->
+    <configurations>
+        <active>
+            <configuration name="HTML5" />
+        </active>
+        <display name="HTML5" />
+    </configurations>
+    <open-tabs>
+        <layout order="0">Map00</layout>
+        <layout order="1">Map01</layout>
+        <layout order="2">Map02</layout>
+        <layout order="3">Map03</layout>
+        <layout order="4">StartScreen</layout>
+        <layout active="1" order="5">Map04</layout>
+        <layout order="6">LevelSelect</layout>
+        <event-sheet order="7">GamePlayEvents</event-sheet>
+        <event-sheet order="8">LevelCompleteEvents</event-sheet>
+        <event-sheet order="9">LevelSelectEvents</event-sheet>
+        <event-sheet order="10">StartScreen</event-sheet>
+    </open-tabs>
+    <properties>
+        <property expanded="1" name="About" />
+        <property expanded="1" name="Project settings" />
+        <property expanded="0" name="Window Size" />
+        <property expanded="1" name="Configuration Settings" />
+    </properties>
+    <families-expanded root="1" />
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="0" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="1" path="sound-folder/" />
+        <folder expanded="1" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="animation-folder/Enemy/" />
+        <folder expanded="1" path="animation-folder/EnemyTarget/" />
+        <folder expanded="1" path="animation-folder/Turret/" />
+        <folder expanded="1" path="animation-folder/Bullet/" />
+        <folder expanded="1" path="animation-folder/EnemySpawner/" />
+        <folder expanded="1" path="animation-folder/levelSprite/" />
+        <folder expanded="1" path="animation-folder/quit/" />
+        <folder expanded="1" path="animation-folder/LevelComplete/" />
+        <folder expanded="1" path="animation-folder/Complete1Star/" />
+        <folder expanded="1" path="animation-folder/Complete2Star/" />
+        <folder expanded="1" path="animation-folder/Complete3Star/" />
+        <folder expanded="1" path="animation-folder/EnemyImage/" />
+        <folder expanded="1" path="animation-folder/TurretImage/" />
+        <folder expanded="1" path="animation-folder/logo/" />
+        <folder expanded="1" path="animation-folder/ReturnToLevel/" />
+        <folder expanded="1" path="animation-folder/Play/" />
+        <folder expanded="1" path="animation-folder/Reset/" />
+        <folder expanded="1" path="animation-folder/ScoreArea/" />
+        <folder expanded="1" path="animation-folder/MainMenu/" />
+        <folder expanded="1" path="animation-folder/Wall2/" />
+    </folders-expanded>
+</c2uistate>

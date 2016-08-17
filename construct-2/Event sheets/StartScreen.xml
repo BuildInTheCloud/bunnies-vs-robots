@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>StartScreen</name>
+    <events>
+        <event-block sid="1746864150440736">
+            <conditions>
+                <condition id="3" inverted="1" name="Local key exists" sid="6353746027132482" type="WebStorage">
+                    <param id="0" name="Key">&quot;CurrentLevel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="3551094384392115" type="Function">
+                    <param id="0" name="Name">&quot;CreateWebStorage&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="4" name="Load" sid="7659602875396374" type="ScoreHistory">
+                    <param id="0" name="JSON">WebStorage.AsJSON</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3459956819367705">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="7586974390193182" type="Touch">
+                    <param id="0" name="Object">Play</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="4642136984474218" type="System">
+                    <param id="0" name="Layout">LevelSelect</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8548991179325623">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="6499454937660335" type="Touch">
+                    <param id="0" name="Object">Reset</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="4178606593669" type="Function">
+                    <param id="0" name="Name">&quot;CreateWebStorage&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="4" name="Load" sid="5603181423385459" type="ScoreHistory">
+                    <param id="0" name="JSON">WebStorage.AsJSON</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1954064217687481" type="ResetComplete">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8928457899948021">
+            <conditions>
+                <condition id="3" name="Local key exists" sid="5879022012449531" type="WebStorage">
+                    <param id="0" name="Key">&quot;CurrentLevel&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="8729232484967649" type="System">
+                    <param id="0" name="Variable">currentLevel</param>
+                    <param id="1" name="Value">WebStorage.LocalValue(&quot;CurrentLevel&quot;)</param>
+                </action>
+                <action id="4" name="Load" sid="27971869106748" type="ScoreHistory">
+                    <param id="0" name="JSON">WebStorage.AsJSON</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3910329893526347">
+            <conditions>
+                <condition id="0" name="On function" sid="572864179705554" type="Function">
+                    <param id="0" name="Name">&quot;CreateWebStorage&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="5211099683486866" type="WebStorage">
+                    <param id="0" name="Key">&quot;CurrentLevel&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Call function" sid="1876790334655391" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">0</param>
+                </action>
+                <action id="0" name="Call function" sid="8797114981521894" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">1</param>
+                </action>
+                <action id="0" name="Call function" sid="7477166003613854" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">2</param>
+                </action>
+                <action id="0" name="Call function" sid="371293761569235" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">3</param>
+                </action>
+                <action id="0" name="Call function" sid="6598082691003811" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">4</param>
+                </action>
+                <action id="0" name="Call function" sid="2665596150265639" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">5</param>
+                </action>
+                <action id="0" name="Call function" sid="3072820210567601" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">6</param>
+                </action>
+                <action id="0" name="Call function" sid="482222987683819" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">7</param>
+                </action>
+                <action id="0" name="Call function" sid="3991835750731128" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">8</param>
+                </action>
+                <action id="0" name="Call function" sid="3908477147530578" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">9</param>
+                </action>
+                <action id="0" name="Call function" sid="2766627063602041" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">10</param>
+                </action>
+                <action id="0" name="Call function" sid="6225981865483449" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">11</param>
+                </action>
+                <action id="0" name="Call function" sid="210908726697787" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">12</param>
+                </action>
+                <action id="0" name="Call function" sid="5403077757340489" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">13</param>
+                </action>
+                <action id="0" name="Call function" sid="3852957671108573" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">14</param>
+                </action>
+                <action id="0" name="Call function" sid="9310533528262996" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">15</param>
+                </action>
+                <action id="0" name="Call function" sid="9491111253205347" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">16</param>
+                </action>
+                <action id="0" name="Call function" sid="2586669445810074" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">17</param>
+                </action>
+                <action id="0" name="Call function" sid="4732500024589041" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">18</param>
+                </action>
+                <action id="0" name="Call function" sid="8107129874657905" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                    <param id="1" name="Parameter {n}">19</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="817124046708614">
+            <conditions>
+                <condition id="0" name="On function" sid="3735260436557904" type="Function">
+                    <param id="0" name="Name">&quot;WebStorageItem&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="8096287303373593" type="WebStorage">
+                    <param id="0" name="Key">&quot;level&quot;&amp;function.Param(0)&amp;&quot;FinalScore&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Set local value" sid="4791648783292371" type="WebStorage">
+                    <param id="0" name="Key">&quot;level&quot;&amp;function.Param(0)&amp;&quot;EnemyKilled&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Set local value" sid="5135019975630832" type="WebStorage">
+                    <param id="0" name="Key">&quot;level&quot;&amp;function.Param(0)&amp;&quot;EnemyEscaped&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Set local value" sid="5807872442512876" type="WebStorage">
+                    <param id="0" name="Key">&quot;level&quot;&amp;function.Param(0)&amp;&quot;TurretsUsed&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Set local value" sid="9207083997907108" type="WebStorage">
+                    <param id="0" name="Key">&quot;level&quot;&amp;function.Param(0)&amp;&quot;TurretsKilled&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Set local value" sid="34401212071394" type="WebStorage">
+                    <param id="0" name="Key">&quot;level&quot;&amp;function.Param(0)&amp;&quot;Stars&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

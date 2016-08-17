@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>LevelCompleteEvents</name>
+    <events>
+        <event-block sid="1599230605034533">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5659456958339453" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="3736308639055344" type="FinalScore">
+                    <param id="0" name="Text">Score&amp;&quot; Final Score&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="6419779436790901" type="TurretsUsed">
+                    <param id="0" name="Text">TurretsUsed</param>
+                </action>
+                <action id="0" name="Set text" sid="2221658147182704" type="TurretsKilled">
+                    <param id="0" name="Text">TurretsKilled</param>
+                </action>
+                <action id="0" name="Set text" sid="3725582078012241" type="EnemyExscaped">
+                    <param id="0" name="Text">EnemyEscaped</param>
+                </action>
+                <action id="0" name="Set text" sid="2791707589241832" type="KillCount">
+                    <param id="0" name="Text">EnemyKilled</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="835290475669479">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="8294752491562083" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">int(ScoreHistory.Get(&quot;level&quot;&amp;playingLevel&amp;&quot;FinalScore&quot;))</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="1699654393394316" type="WebStorage">
+                            <param id="0" name="Key">&quot;level&quot;&amp;playingLevel&amp;&quot;FinalScore&quot;</param>
+                            <param id="1" name="Value">Score</param>
+                        </action>
+                        <action id="4" name="Load" sid="3380360947894945" type="ScoreHistory">
+                            <param id="0" name="JSON">WebStorage.AsJSON</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="429273545178279">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4340767679285029" type="System">
+                                    <param id="0" name="Variable">Score</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action disabled="1" id="0" name="Set text" sid="1216718428564099" type="debug">
+                                    <param id="0" name="Text">((EnemyKilled+EnemyEscaped)/3)*2</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="688340924502644" type="Complete1Star">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="4105233931047985" type="Complete2Star">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="230656125719741" type="Complete3Star">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="8974524525809498">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="5642247041649233" type="System">
+                                            <param id="0" name="Variable">Score</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Value">(EnemyKilled+EnemyEscaped)/3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set local value" sid="6663606318630093" type="WebStorage">
+                                            <param id="0" name="Key">&quot;level&quot;&amp;playingLevel&amp;&quot;Stars&quot;</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="4" name="Load" sid="5371180209399522" type="ScoreHistory">
+                                            <param id="0" name="JSON">WebStorage.AsJSON</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="1599972679088079" type="Complete1Star">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3305298589992946">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="3728274022380327" type="System">
+                                            <param id="0" name="Variable">Score</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">(EnemyKilled+EnemyEscaped)-((EnemyKilled+EnemyEscaped)*0.10)</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="8651256018439475" type="System">
+                                            <param id="0" name="Variable">Score</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">(EnemyKilled+EnemyEscaped)/3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set local value" sid="258572171217772" type="WebStorage">
+                                            <param id="0" name="Key">&quot;level&quot;&amp;playingLevel&amp;&quot;Stars&quot;</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                        <action id="4" name="Load" sid="10129227906" type="ScoreHistory">
+                                            <param id="0" name="JSON">WebStorage.AsJSON</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="8443465923463835" type="Complete1Star">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="2879172275011507" type="Complete2Star">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="4690120914133023">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="1032222007532847" type="System">
+                                            <param id="0" name="Variable">Score</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">(EnemyKilled+EnemyEscaped)-((EnemyKilled+EnemyEscaped)*0.10)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set local value" sid="7314929074650189" type="WebStorage">
+                                            <param id="0" name="Key">&quot;level&quot;&amp;playingLevel&amp;&quot;Stars&quot;</param>
+                                            <param id="1" name="Value">3</param>
+                                        </action>
+                                        <action id="4" name="Load" sid="918810463825122" type="ScoreHistory">
+                                            <param id="0" name="JSON">WebStorage.AsJSON</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="4998753853261567" type="Complete1Star">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="765020733315392" type="Complete2Star">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="5373623666711531" type="Complete3Star">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="8601170901173825">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="7277950295435715" type="System">
+                                            <param id="0" name="Variable">playingLevel</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">currentLevel</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7679967087567017" type="System">
+                                            <param id="0" name="Variable">currentLevel</param>
+                                            <param id="1" name="Value">playingLevel+1</param>
+                                        </action>
+                                        <action id="0" name="Set local value" sid="381668512233133" type="WebStorage">
+                                            <param id="0" name="Key">&quot;CurrentLevel&quot;</param>
+                                            <param id="1" name="Value">currentLevel</param>
+                                        </action>
+                                        <action id="4" name="Load" sid="5678024849743657" type="ScoreHistory">
+                                            <param id="0" name="JSON">WebStorage.AsJSON</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="65459557733504">
+            <conditions>
+                <condition id="3" name="On touched object" sid="6574433214338222" type="Touch">
+                    <param id="0" name="Object">ReturnToLevel</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="8890438299561932" type="System">
+                    <param id="0" name="Layout">LevelSelect</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="329848480267252">
+            <conditions>
+                <condition id="3" name="On touched object" sid="915891201559356" type="Touch">
+                    <param id="0" name="Object">MainMenu</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="1278569399366271" type="System">
+                    <param id="0" name="Layout">StartScreen</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

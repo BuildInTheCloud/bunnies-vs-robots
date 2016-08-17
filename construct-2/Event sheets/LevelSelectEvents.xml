@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>LevelSelectEvents</name>
+    <events>
+        <variable constant="0" name="currentLevel" sid="1394299940088433" static="0" type="number">0</variable>
+        <event-block sid="7147813167821427">
+            <conditions>
+                <condition id="-11" name="For Each" sid="5771811606802997" type="System">
+                    <param id="0" name="Object">levelSprite</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="4919721235848605" type="levelSprite">
+                    <param id="0" name="Instance variable">score</param>
+                    <param id="1" name="Value">int(ScoreHistory.Get(&quot;level&quot;&amp;levelSprite.level&amp;&quot;FinalScore&quot;))</param>
+                </action>
+                <action id="-10" name="Set value" sid="5174873886829287" type="levelSprite">
+                    <param id="0" name="Instance variable">stars</param>
+                    <param id="1" name="Value">int(ScoreHistory.Get(&quot;level&quot;&amp;levelSprite.level&amp;&quot;Stars&quot;))</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="4073152190231288">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1885187513158434" type="levelSprite">
+                            <param id="0" name="Instance variable">stars</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="1682239349920425" type="levelSprite">
+                            <param id="0" name="Animation">levelSprite.stars&amp;&quot;star&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1987896204817441">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="296812747830728" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">currentLevel</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="3324343572458988" type="levelSprite">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8607036144957445" type="levelSprite">
+                            <param id="0" name="Instance variable">open</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="3143159066174664" type="ScoreDisplay">
+                            <param id="0" name="Text">levelSprite(ScoreDisplay.Level).Score</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4013335836327681">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1443181567313845" type="levelSprite">
+                            <param id="0" name="Instance variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="7979906944887488" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">currentLevel</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="7085807745995566" type="levelSprite">
+                            <param id="0" name="Frame number">2</param>
+                        </action>
+                        <action id="0" name="Set text" sid="6075687010772061" type="ScoreDisplay">
+                            <param id="0" name="Text">levelSprite(ScoreDisplay.Level).Score</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="369537742610747">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6385673548403717" type="levelSprite">
+                            <param id="0" name="Instance variable">score</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="6359492188962235" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">currentLevel</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="5084335312220161" type="levelSprite">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="9742115279068975">
+            <conditions>
+                <condition id="-11" name="For Each" sid="9994733759896909" type="System">
+                    <param id="0" name="Object">ScoreDisplay</param>
+                </condition>
+                <condition id="0" name="Compare text" sid="4359521277638043" type="ScoreDisplay">
+                    <param id="0" name="Text to compare">&quot;0&quot;</param>
+                    <param id="1" name="Case sensitivity">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="6091056664534994" type="ScoreDisplay">
+                    <param id="0" name="Text">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8173654982853477">
+            <conditions>
+                <condition id="3" name="On touched object" sid="686663298973279" type="Touch">
+                    <param id="0" name="Object">levelSprite</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" sid="1250656322757438" type="levelSprite">
+                    <param id="0" name="Instance variable">open</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Row 1 levels</comment>
+                <event-block sid="6028310037979199">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4811152724444226" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="174421093083266" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">0{###}150{###}90{###}60</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="7202595849999949" type="System">
+                            <param id="0" name="Layout">Map00</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8957907791799663">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2426803667206531" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="9555947511899454" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">1{###}150{###}95{###}65</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="8979543611085536" type="System">
+                            <param id="0" name="Layout">Map01</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3444823738638244">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4638944485320216" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="6813219998681736" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">2{###}150{###}100{###}70</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="4939410860717138" type="System">
+                            <param id="0" name="Layout">Map02</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5181796543873394">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="8516335247128485" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="4694048153536363" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">3{###}150{###}105{###}75</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="6724784568810462" type="System">
+                            <param id="0" name="Layout">Map03</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2699646279778858">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6003875295537176" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="9373097255955738" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">4{###}150{###}110{###}80</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="1812801348131729" type="System">
+                            <param id="0" name="Layout">Map04</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Row 2 levels</comment>
+                <event-block sid="7497054166079873">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="196438832770608" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="2223654625145304" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">5{###}250{###}90{###}60</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="7149245381074318" type="System">
+                            <param id="0" name="Layout">Map00</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9619672210478113">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="5421452939161512" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="2571963384791271" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">6{###}250{###}95{###}65</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="3483246370929511" type="System">
+                            <param id="0" name="Layout">Map01</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1321735179084654">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4675303834415885" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="4854109222341412" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">7{###}250{###}100{###}70</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="1183731881765226" type="System">
+                            <param id="0" name="Layout">Map02</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7858601532950691">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4690037063992216" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">8</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="9185810779093931" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">8{###}250{###}105{###}75</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="7167237910307171" type="System">
+                            <param id="0" name="Layout">Map03</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3277330116035239">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1504760892949489" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">9</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="8773036838898866" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">9{###}250{###}110{###}80</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="8377937509108346" type="System">
+                            <param id="0" name="Layout">Map04</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Row 3 levels</comment>
+                <event-block sid="6052518479986511">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2192974382057444" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="2740876198169526" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">10{###}350{###}90{###}60</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="2259899957113605" type="System">
+                            <param id="0" name="Layout">Map00</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6662748728570045">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2394780515239509" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">11</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="2967890611853484" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">11{###}350{###}95{###}65</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="3894116957664115" type="System">
+                            <param id="0" name="Layout">Map01</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9490816325126361">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="8648825240489222" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">12</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="7628714929408816" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">12{###}350{###}100{###}70</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="5199572044927235" type="System">
+                            <param id="0" name="Layout">Map02</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="52170018753665">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="3428485397832791" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">13</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="3118141193681694" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">13{###}350{###}105{###}75</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="210582695567675" type="System">
+                            <param id="0" name="Layout">Map03</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5241204970009205">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2380416775485262" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">14</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="2688907786862249" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">14{###}350{###}110{###}80</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="5932908357623729" type="System">
+                            <param id="0" name="Layout">Map04</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Row 4 levels</comment>
+                <event-block sid="4331465935577669">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="3600074024058125" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">15</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="9704828588948798" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">15{###}450{###}100{###}70</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="710384079742915" type="System">
+                            <param id="0" name="Layout">Map00</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1967571458847581">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="5276242160389227" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">16</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="2036588050800121" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">16{###}450{###}110{###}80</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="4294719198635329" type="System">
+                            <param id="0" name="Layout">Map01</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7768924878099559">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4549524110707338" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">17</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="3117674902903521" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">17{###}450{###}120{###}90</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="5740298801305716" type="System">
+                            <param id="0" name="Layout">Map02</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2859592323000994">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="5672477225765718" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">18</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="7481460177770044" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">18{###}450{###}130{###}100</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="2241837851254614" type="System">
+                            <param id="0" name="Layout">Map03</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6471383436799752">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="9363414076970403" type="levelSprite">
+                            <param id="0" name="Instance variable">level</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">19</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="1814119695941658" type="Function">
+                            <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                            <param id="1" name="Parameter {n}">19{###}450{###}140{###}110</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="897557731814839" type="System">
+                            <param id="0" name="Layout">Map04</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Set global values before starting map</comment>
+        <event-block sid="3219736571254638">
+            <conditions>
+                <condition id="0" name="On function" sid="9831490615299715" type="Function">
+                    <param id="0" name="Name">&quot;ClearLevelValues&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="5487707114771872" type="System">
+                    <param id="0" name="Variable">start</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="6316518064595451" type="System">
+                    <param id="0" name="Variable">FirstEmemyStart</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="3124918697861107" type="System">
+                    <param id="0" name="Variable">EnemyKilled</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="1014358758263724" type="System">
+                    <param id="0" name="Variable">TurretsUsed</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="9864224604224979" type="System">
+                    <param id="0" name="Variable">TurretsKilled</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="7674792395752142" type="System">
+                    <param id="0" name="Variable">EnemyEscaped</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="3708150129110657" type="System">
+                    <param id="0" name="Variable">playingLevel</param>
+                    <param id="1" name="Value">function.Param(0)</param>
+                </action>
+                <action id="-9" name="Set value" sid="4536735418648526" type="System">
+                    <param id="0" name="Variable">EnemyCount</param>
+                    <param id="1" name="Value">Function.Param(1)</param>
+                </action>
+                <action id="-9" name="Set value" sid="6039010186666819" type="System">
+                    <param id="0" name="Variable">EnemySpeed</param>
+                    <param id="1" name="Value">Function.Param(2)</param>
+                </action>
+                <action id="-9" name="Set value" sid="5424935209087827" type="System">
+                    <param id="0" name="Variable">EnemyAcceleration</param>
+                    <param id="1" name="Value">Function.Param(3)</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Return to main menu</comment>
+        <event-block sid="8369533634251818">
+            <conditions>
+                <condition id="3" name="On touched object" sid="9423490168080164" type="Touch">
+                    <param id="0" name="Object">MainMenu</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="4608212399942977" type="System">
+                    <param id="0" name="Layout">StartScreen</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

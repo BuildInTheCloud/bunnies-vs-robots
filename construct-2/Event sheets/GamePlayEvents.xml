@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GamePlayEvents</name>
+    <events>
+        <variable constant="0" name="Score" sid="195532483070202" static="0" type="number">0</variable>
+        <variable comment="when 1 start enemy" constant="0" name="start" sid="74090438618975" static="0" type="number">0</variable>
+        <variable comment="Enemy Kill Count" constant="0" name="EnemyKilled" sid="7961750306253808" static="0" type="number">0</variable>
+        <variable constant="0" name="TurretsUsed" sid="3711817338484478" static="0" type="number">0</variable>
+        <variable constant="0" name="TurretsKilled" sid="2670620882701704" static="0" type="number">0</variable>
+        <variable constant="0" name="playingLevel" sid="7549122044219708" static="0" type="number">0</variable>
+        <variable constant="0" name="EnemyCount" sid="5763307046438477" static="0" type="number">10</variable>
+        <variable constant="0" name="EnemyEscaped" sid="7936560514085375" static="0" type="number">0</variable>
+        <variable comment="Seconds interval between spawning a new enemy." constant="0" name="EnemySpawnTime" sid="270118564830864" static="0" type="number">1</variable>
+        <variable constant="0" name="FirstEmemyStart" sid="2894678456646617" static="0" type="number">0</variable>
+        <variable constant="0" name="EnemySpeed" sid="322171412354075" static="0" type="number">90</variable>
+        <variable constant="0" name="EnemyAcceleration" sid="258798294145334" static="0" type="number">60</variable>
+        <event-group description="Stuff for the start of the level" sid="2508274594455022" title="Level Start">
+            <sub-events>
+                <event-block sid="8272400731133733">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="2147329991547717" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="8073131363992865" type="Enemy" />
+                        <action id="7" name="Play (by name)" sid="9479305564001487" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">&quot;NewAchievement1&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="2" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="5257370951248759" type="System">
+                            <param id="0" name="Variable">EnemySpawnTime</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1267237536314387">
+                    <conditions />
+                    <actions />
+                </event-block>
+                <event-block sid="1867714371659243">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="3121371191161946" type="System">
+                            <param id="0" name="Variable">EnemyCount</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="6431233188888261" type="System">
+                            <param id="0" name="Variable">start</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9760228190187726">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="8365943621082615" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="7406216716418895" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">EnemyKilled - (3 * TurretsKilled) - TurretsUsed - (4 * EnemyEscaped)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="4253332871120502" type="LevelScore">
+                            <param id="0" name="Text">&quot;SCORE: &quot;&amp;Score</param>
+                        </action>
+                        <action disabled="1" id="0" name="Set text" sid="3375872558820072" type="debug">
+                            <param id="0" name="Text">&quot;Enemy.Count&quot;&amp;Enemy.Count</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2158354952785743">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="1631028244735047" type="Touch">
+                            <param id="0" name="Object">quit</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-24" name="Stop loop" sid="5246878411082872" type="System" />
+                        <action id="-9" name="Destroy" sid="127640985929721" type="Enemy" />
+                        <action id="-9" name="Destroy" sid="5276903402992897" type="Turret" />
+                        <action id="-21" name="Reset global variables" sid="5921105766524457" type="System" />
+                        <action id="-2" name="Go to layout" sid="7486637204964102" type="System">
+                            <param id="0" name="Layout">StartScreen</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7185690715052359">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="9147705174038571" type="System" />
+                        <condition id="-14" name="Compare variable" sid="6316554980584929" type="System">
+                            <param id="0" name="Variable">TurretsUsed</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="9231550344351625" type="System">
+                            <param id="0" name="First value">Enemy.Count</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="3088316031857626" type="System">
+                            <param id="0" name="Layout">LevelComplete</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="7097450472308605" title="Enemy control">
+            <sub-events>
+                <comment>Every 2 seconds, but gradually reducing the interval, spawn a new enemy and move it to the target.</comment>
+                <event-block sid="3271038621470433">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="2409765687609311" type="System">
+                            <param id="0" name="Interval (seconds)">EnemySpawnTime</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="9814772934543579" type="System">
+                            <param id="0" name="Variable">start</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition behavior="Pathfinding" id="3" inverted="1" name="Is calculating path" sid="1072432375546742" type="Enemy" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="750330927384048" type="EnemySpawner">
+                            <param id="0" name="Object">Enemy</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="9222906638653834" type="Enemy">
+                            <param id="0" name="X">EnemyTarget.X</param>
+                            <param id="1" name="Y">EnemyTarget.Y</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="7251658903039029" type="System">
+                            <param id="0" name="Variable">EnemyCount</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Every time an enemy spawn, the spawn interval reduces slightly.  This makes them very gradually come faster!  Make sure it doesn&apos;t go below every 0.5 seconds though.</comment>
+                        <event-block sid="8823787518247044">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="422430568634625" type="System">
+                                    <param id="0" name="Variable">EnemySpawnTime</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0.8</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="4630066950343985" type="System">
+                                    <param id="0" name="Variable">EnemySpawnTime</param>
+                                    <param id="1" name="Value">0.01</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Once a path has been found, start moving along it.</comment>
+                <event-block sid="2778440362388457">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="0" name="On path found" sid="511432561719095" type="Enemy" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="1" name="Move along path" sid="2493507946259006" type="Enemy" />
+                    </actions>
+                </event-block>
+                <comment>When bullets hit enemies, make it subtract from health and spawn some particles.</comment>
+                <event-block sid="253627117330496">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="2417959376806197" type="Bullet">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="7571899257997619" type="Enemy">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Subtract from" sid="6651608188010639" type="Enemy">
+                            <param id="0" name="Instance variable">damage</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="9622960699568496" type="Bullet" />
+                        <action id="0" name="Spawn another object" sid="8091890740955243" type="Bullet">
+                            <param id="0" name="Object">BulletImpactParticles</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-16" name="Set opacity" sid="9648604397746569" type="Enemy">
+                            <param id="0" name="Opacity">Enemy.damage</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Destroy enemies with no health left, throwing in a particles effect.</comment>
+                <event-block sid="5044408784496748">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4984103190508652" type="Enemy">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="4014687356934063" type="Enemy">
+                            <param id="0" name="Object">EnemyDeadParticles</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="991497261363186" type="Enemy" />
+                        <action id="-10" name="Add to" sid="8783881296274072" type="System">
+                            <param id="0" name="Variable">EnemyKilled</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="4195195984463545" type="KillCount">
+                            <param id="0" name="Text">EnemyKilled</param>
+                        </action>
+                        <action id="7" name="Play (by name)" sid="524299646632291" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">&quot;boom&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">-15</param>
+                            <param id="2" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>When an enemy reaches the target, destroy it, but also pick a random turret and destroy that.</comment>
+                <event-block sid="967495083762264">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="3266540440521791" type="Enemy">
+                            <param id="0" name="Object">EnemyTarget</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="501212357674047" type="Enemy" />
+                        <action id="-10" name="Add to" sid="1701273190074835" type="System">
+                            <param id="0" name="Variable">EnemyEscaped</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="8624361331550819" type="EnemyExscaped">
+                            <param id="0" name="Text">EnemyEscaped</param>
+                        </action>
+                        <action id="7" name="Play (by name)" sid="8511536300023708" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">&quot;Power-Up&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">3</param>
+                            <param id="2" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6175551428716688" title="Turret control">
+            <sub-events>
+                <comment>Tell the turrets to target the enemies.</comment>
+                <event-block sid="2639349898789365">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="7082545077525294" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Turret" id="1" name="Add object to target" sid="5380903432720875" type="Turret">
+                            <param id="0" name="Target">Enemy</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>When shooting, spawn a bullet.</comment>
+                <event-block sid="7776274025097079">
+                    <conditions>
+                        <condition behavior="Turret" id="1" name="On shoot" sid="160970611730552" type="Turret" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="6124042382244633" type="Turret">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action disabled="1" id="7" name="Play (by name)" sid="8185939642085945" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">&quot;arrow&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">-15</param>
+                            <param id="2" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>To prevent bullets that miss flying across the whole screen, destroy them when they&apos;ve travelled out of range.</comment>
+                <event-block sid="7784074189938254">
+                    <conditions>
+                        <condition behavior="Bullet" id="1" name="Compare distance travelled" sid="235906852932364" type="Bullet">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Distance">200</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="8390609763248194" type="Bullet" />
+                    </actions>
+                </event-block>
+                <comment>Start first enemy after first turret is placed</comment>
+                <event-block sid="8300966586155501">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="8636063003282024" type="Touch">
+                            <param id="0" name="Object">Wall</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="7266211916655988" type="System">
+                            <param id="0" name="Variable">FirstEmemyStart</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="3510238617423343" type="Enemy" />
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="7036077798182125" type="Enemy">
+                            <param id="0" name="X">EnemyTarget.X</param>
+                            <param id="1" name="Y">EnemyTarget.Y</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="2394485946023451" type="System">
+                            <param id="0" name="Variable">FirstEmemyStart</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Create new turrets by touching the walls.</comment>
+                <event-block sid="9340702692288639">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="3877528908910467" type="Touch">
+                            <param id="0" name="Object">Wall</param>
+                        </condition>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="6643274262611744" type="Turret">
+                            <param id="0" name="Object">Turret</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="2355520822672701" type="System">
+                            <param id="0" name="Object to create">Turret</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">round((Touch.X - 16) / 32) * 32 + 16</param>
+                            <param id="3" name="Y">round((Touch.Y - 16) / 32) * 32 + 16</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="815645565448932" type="System">
+                            <param id="0" name="Variable">start</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="1930476307838356" type="System">
+                            <param id="0" name="Variable">TurretsUsed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="6441919095563272" type="TurretsUsed">
+                            <param id="0" name="Text">TurretsUsed</param>
+                        </action>
+                        <action id="7" name="Play (by name)" sid="7086808691170573" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">&quot;hop&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="2" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7911485772721259">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="6278679425792956" type="Turret">
+                            <param id="0" name="Object">Turret</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="975585911850802" type="Turret" />
+                        <action id="-11" name="Subtract from" sid="8235137615119185" type="System">
+                            <param id="0" name="Variable">TurretsUsed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="258483049813156" type="TurretsUsed">
+                            <param id="0" name="Text">TurretsUsed</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="contact with other stuff" sid="5049630265928111" title="Contact">
+            <sub-events>
+                <event-block sid="8600323128904997">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="1687656817488327" type="Bullet">
+                            <param id="0" name="Object">Turret</param>
+                        </condition>
+                        <condition behavior="Bullet" id="1" name="Compare distance travelled" sid="6511393469238464" type="Bullet">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Distance">50</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="5308539579021836" type="System">
+                            <param id="0" name="Variable">TurretsKilled</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="5010275780935313" type="TurretsKilled">
+                            <param id="0" name="Text">TurretsKilled</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="353120970655218" type="Turret" />
+                    </actions>
+                </event-block>
+                <event-block sid="9577050151454444">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="8973364051896831" type="Enemy">
+                            <param id="0" name="Object">Turret</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="9807818533295525" type="TurretsKilled">
+                            <param id="0" name="Text">TurretsKilled</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="1311436475201067" type="System">
+                            <param id="0" name="Variable">TurretsKilled</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="924110673270226" type="Turret" />
+                        <action id="7" name="Play (by name)" sid="5591204210004499" type="Audio">
+                            <param id="0" name="Folder">0</param>
+                            <param id="1" name="Audio file name">&quot;hop&quot;</param>
+                            <param id="3" name="Loop">0</param>
+                            <param id="4" name="Volume">0</param>
+                            <param id="2" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
